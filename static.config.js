@@ -11,19 +11,19 @@ export default {
       'https://jsonplaceholder.typicode.com/posts'
     )
     return [
-      {
-        path: '/blog',
-        getData: () => ({
-          posts,
-        }),
-        children: posts.map((post /* : Post */) => ({
-          path: `/post/${post.id}`,
-          template: 'src/containers/Post',
-          getData: () => ({
-            post,
-          }),
-        })),
-      },
+      // {
+      //   path: '/blog',
+      //   getData: () => ({
+      //     posts,
+      //   }),
+      //   children: posts.map((post /* : Post */) => ({
+      //     path: `/post/${post.id}`,
+      //     template: 'src/containers/Post',
+      //     getData: () => ({
+      //       post,
+      //     }),
+      //   })),
+      // },
     ]
   },
   plugins: [
