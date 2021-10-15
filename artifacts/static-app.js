@@ -223,17 +223,17 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(13);
+var _propTypes = __webpack_require__(14);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _hoistNonReactStatics = __webpack_require__(15);
+var _hoistNonReactStatics = __webpack_require__(16);
 
 var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
 var _requireUniversalModule2 = _interopRequireDefault(_requireUniversalModule);
 
-var _context = __webpack_require__(14);
+var _context = __webpack_require__(15);
 
 var _context2 = _interopRequireDefault(_context);
 
@@ -657,7 +657,7 @@ var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_)
 var external_react_static_ = __webpack_require__(1);
 
 // EXTERNAL MODULE: external "@reach/router"
-var router_ = __webpack_require__(10);
+var router_ = __webpack_require__(11);
 
 // CONCATENATED MODULE: C:/Users/Cyrille/WebstormProjects/paperaces/src/containers/Dynamic.tsx
 
@@ -705,12 +705,51 @@ function LoadingScreen() {
 Object(external_react_static_["addPrefetchExcludes"])(['dynamic']);
 
 function App_App() {
-  return /*#__PURE__*/external_react_default.a.createElement(external_react_static_["Root"], null, /*#__PURE__*/external_react_default.a.createElement(external_react_static_["Head"], null, /*#__PURE__*/external_react_default.a.createElement("script", {
+  return /*#__PURE__*/external_react_default.a.createElement(external_react_static_["Root"], null, /*#__PURE__*/external_react_default.a.createElement(external_react_static_["Head"], null, /*#__PURE__*/external_react_default.a.createElement("title", null, "Pape Races"), /*#__PURE__*/external_react_default.a.createElement("link", {
+    rel: "apple-touch-icon",
+    sizes: "180x180",
+    href: "/icons/apple-touch-icon.png"
+  }), /*#__PURE__*/external_react_default.a.createElement("link", {
+    rel: "icon",
+    type: "image/png",
+    sizes: "32x32",
+    href: "/icons/favicon-32x32.png"
+  }), /*#__PURE__*/external_react_default.a.createElement("link", {
+    rel: "icon",
+    type: "image/png",
+    sizes: "16x16",
+    href: "/icons/favicon-16x16.png"
+  }), /*#__PURE__*/external_react_default.a.createElement("link", {
+    rel: "manifest",
+    href: "/icons/site.webmanifest"
+  }), /*#__PURE__*/external_react_default.a.createElement("link", {
+    rel: "mask-icon",
+    href: "/icons/safari-pinned-tab.svg",
+    color: "#dd4bc4"
+  }), /*#__PURE__*/external_react_default.a.createElement("link", {
+    rel: "shortcut icon",
+    href: "/icons/favicon.ico"
+  }), /*#__PURE__*/external_react_default.a.createElement("meta", {
+    name: "apple-mobile-web-app-title",
+    content: "Pape Races"
+  }), /*#__PURE__*/external_react_default.a.createElement("meta", {
+    name: "application-name",
+    content: "Pape Races"
+  }), /*#__PURE__*/external_react_default.a.createElement("meta", {
+    name: "msapplication-TileColor",
+    content: "#dd4bc4"
+  }), /*#__PURE__*/external_react_default.a.createElement("meta", {
+    name: "msapplication-config",
+    content: "/icons/browserconfig.xml"
+  }), /*#__PURE__*/external_react_default.a.createElement("meta", {
+    name: "theme-color",
+    content: "#ffffff"
+  }), /*#__PURE__*/external_react_default.a.createElement("script", {
     async: true,
     defer: true,
     "data-domain": "paperaces.com",
     src: "https://analytics.papaccino.gg/js/plausible.js"
-  }), /*#__PURE__*/external_react_default.a.createElement("title", null, "Pape Races")), /*#__PURE__*/external_react_default.a.createElement("div", {
+  })), /*#__PURE__*/external_react_default.a.createElement("div", {
     className: "App"
   }, /*#__PURE__*/external_react_default.a.createElement(external_react_default.a.Suspense, {
     fallback: /*#__PURE__*/external_react_default.a.createElement(components_LoadingScreen, null)
@@ -897,75 +936,6 @@ var cacheProm = exports.cacheProm = function cacheProm(pr, chunkName, props, pro
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports) {
-
-module.exports = require("@reach/router");
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-dom");
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports) {
-
-module.exports = require("C:\\Users\\Cyrille\\WebstormProjects\\paperaces\\node_modules\\react-static\\lib\\browser");
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports) {
-
-module.exports = require("prop-types");
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    "default": obj
-  };
-}
-
-var ReportContext = _react2["default"].createContext({
-  report: function report() {}
-});
-
-exports["default"] = ReportContext;
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports) {
-
-module.exports = require("hoist-non-react-statics");
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports) {
-
-module.exports = require("@babel/runtime/helpers/interopRequireDefault");
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports) {
-
-module.exports = require("@babel/runtime/helpers/interopRequireWildcard");
-
-/***/ }),
-/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1056,6 +1026,75 @@ function toComment(sourceMap) {
 }
 
 /***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+module.exports = require("@reach/router");
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-dom");
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+module.exports = require("C:\\Users\\Cyrille\\WebstormProjects\\paperaces\\node_modules\\react-static\\lib\\browser");
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
+module.exports = require("prop-types");
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+}
+
+var ReportContext = _react2["default"].createContext({
+  report: function report() {}
+});
+
+exports["default"] = ReportContext;
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+module.exports = require("hoist-non-react-statics");
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports) {
+
+module.exports = require("@babel/runtime/helpers/interopRequireDefault");
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports) {
+
+module.exports = require("@babel/runtime/helpers/interopRequireWildcard");
+
+/***/ }),
 /* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1087,15 +1126,18 @@ var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_)
 // EXTERNAL MODULE: C:/Users/Cyrille/WebstormProjects/paperaces/src/pages/index.css
 var pages = __webpack_require__(45);
 
+// EXTERNAL MODULE: C:/Users/Cyrille/WebstormProjects/paperaces/src/components/SpeedrunColumn.css
+var SpeedrunColumn = __webpack_require__(46);
+
 // CONCATENATED MODULE: C:/Users/Cyrille/WebstormProjects/paperaces/src/components/SpeedrunColumn.tsx
 
-
-// function VideoButton(props: { url: string }) {
+ // function VideoButton(props: { url: string }) {
 //     return <div onClick={() => window.open(props.url)}>
 //         VOD
 //     </div>
 // }
-function SpeedrunColumn(props) {
+
+function SpeedrunColumn_SpeedrunColumn(props) {
   if (!props.data[props.console]) {
     return /*#__PURE__*/external_react_default.a.createElement(external_react_default.a.Fragment, null);
   }
@@ -1105,23 +1147,14 @@ function SpeedrunColumn(props) {
 
     if (!runner) {
       return /*#__PURE__*/external_react_default.a.createElement("div", {
-        style: {
-          margin: 'auto 0',
-          padding: '0 1em',
-          textAlign: "left"
-        }
+        className: "anon-runner"
       }, id);
     }
 
     return /*#__PURE__*/external_react_default.a.createElement("div", {
+      className: "runner",
       style: {
-        margin: 'auto 0',
-        textAlign: "left",
-        backgroundClip: 'text',
         backgroundImage: "linear-gradient(to right, ".concat(runner.color.left, ", ").concat(runner.color.right, ")"),
-        WebkitBackgroundClip: 'text',
-        MozBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
         fontWeight: id.length === 8 ? 'bold' : 'inherit'
       }
     }, runner.name);
@@ -1143,11 +1176,7 @@ function SpeedrunColumn(props) {
     var minutes = Math.floor(time / 60) % 60;
     var hours = Math.floor(time / 3600);
     return /*#__PURE__*/external_react_default.a.createElement("div", {
-      style: {
-        margin: 'auto 0',
-        padding: '0 1em',
-        textAlign: 'right'
-      }
+      className: "time"
     }, hours, "h", minutes < 10 ? '0' : '', minutes, "m", seconds < 10 ? '0' : '', seconds, "s");
   }
 
@@ -1162,26 +1191,14 @@ function SpeedrunColumn(props) {
       textAlign: "center"
     }
   }, props.console), /*#__PURE__*/external_react_default.a.createElement("div", {
-    style: {
-      height: '30em',
-      overflowY: 'auto',
-      overflowX: "hidden"
-    }
+    className: 'table-container'
   }, /*#__PURE__*/external_react_default.a.createElement("table", {
     style: {
       width: "100%"
     }
   }, /*#__PURE__*/external_react_default.a.createElement("tbody", null, board.map(function (d, i) {
     return /*#__PURE__*/external_react_default.a.createElement("tr", {
-      style: {
-        padding: '1vh 1vw',
-        display: "flex",
-        justifyContent: "space-between",
-        color: 'inherit',
-        textDecoration: "inherit",
-        backgroundColor: i % 2 ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.02)',
-        cursor: "pointer"
-      },
+      className: "lb-row",
       onClick: function onClick() {
         return window.open(d.link);
       },
@@ -1213,7 +1230,7 @@ function SpeedrunColumn(props) {
   })))));
 }
 
-/* harmony default export */ var components_SpeedrunColumn = (SpeedrunColumn);
+/* harmony default export */ var components_SpeedrunColumn = (SpeedrunColumn_SpeedrunColumn);
 // EXTERNAL MODULE: external "node-fetch"
 var external_node_fetch_ = __webpack_require__(6);
 var external_node_fetch_default = /*#__PURE__*/__webpack_require__.n(external_node_fetch_);
@@ -1403,12 +1420,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       flexWrap: "wrap"
     }
   }, categories.active && categories.active.leaderboard ? consoles.map(function (c) {
-    return /*#__PURE__*/external_react_default.a.createElement(components_SpeedrunColumn, {
+    console.log(categories.active.leaderboard);
+    return categories.active.leaderboard[c.name].length > 0 ? /*#__PURE__*/external_react_default.a.createElement(components_SpeedrunColumn, {
       data: categories.active.leaderboard,
       console: c.name,
       runners: categories.runners,
       key: c.id
-    });
+    }) : /*#__PURE__*/external_react_default.a.createElement(external_react_default.a.Fragment, null);
   }) : /*#__PURE__*/external_react_default.a.createElement(external_react_default.a.Fragment, null))));
 });
 
@@ -1428,7 +1446,7 @@ var _react = _interopRequireDefault(__webpack_require__(0));
 
 var _reactStatic = __webpack_require__(1);
 
-var _router = __webpack_require__(10);
+var _router = __webpack_require__(11);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : {
@@ -1579,7 +1597,7 @@ module.exports = __webpack_require__(35);
 
 var plugins = __webpack_require__(27)["default"];
 
-var _require = __webpack_require__(12),
+var _require = __webpack_require__(13),
     registerPlugins = _require.registerPlugins;
 
 registerPlugins(plugins);
@@ -1629,7 +1647,7 @@ var plugins = [{
 
 /* eslint-disable import/no-dynamic-require */
 
-var _require = __webpack_require__(12),
+var _require = __webpack_require__(13),
     registerTemplates = _require.registerTemplates;
 
 var _require2 = __webpack_require__(29),
@@ -2023,11 +2041,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(13);
+var _propTypes = __webpack_require__(14);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _context = __webpack_require__(14);
+var _context = __webpack_require__(15);
 
 var _context2 = _interopRequireDefault(_context);
 
@@ -2110,7 +2128,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.__handleAfter = exports.__update = undefined;
 
-var _hoistNonReactStatics = __webpack_require__(15);
+var _hoistNonReactStatics = __webpack_require__(16);
 
 var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
@@ -2172,9 +2190,9 @@ var __handleAfter = exports.__handleAfter = function __handleAfter(props, state,
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(16);
+var _interopRequireDefault = __webpack_require__(17);
 
-var _interopRequireWildcard = __webpack_require__(17);
+var _interopRequireWildcard = __webpack_require__(18);
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -2221,9 +2239,9 @@ module.exports = require("C:\\Users\\Cyrille\\WebstormProjects\\paperaces\\node_
 "use strict";
 
 
-var _interopRequireWildcard = __webpack_require__(17);
+var _interopRequireWildcard = __webpack_require__(18);
 
-var _interopRequireDefault = __webpack_require__(16);
+var _interopRequireDefault = __webpack_require__(17);
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -2272,7 +2290,7 @@ module.exports = require("@babel/runtime/helpers/objectWithoutProperties");
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(11);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_hot_loader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(22);
 /* harmony import */ var react_hot_loader__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_hot_loader__WEBPACK_IMPORTED_MODULE_2__);
@@ -2338,7 +2356,7 @@ module.exports = function (originalModule) {
 /* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(18)(false);
+exports = module.exports = __webpack_require__(10)(false);
 // Imports
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;800&display=swap);", ""]);
 var urlEscape = __webpack_require__(43);
@@ -2385,9 +2403,19 @@ module.exports = __webpack_require__.p + "static/Paper Mario Dialog Redesigned.4
 /* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(18)(false);
+exports = module.exports = __webpack_require__(10)(false);
 // Module
-exports.push([module.i, ".container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: flex-start;\r\n    justify-content: center;\r\n    width: 95vw;\r\n}\r\n\r\n.header-title {\r\n    margin: auto 0;\r\n    padding: 0 20px 0 10px;\r\n}\r\n\r\n.header {\r\n    width: 100%;\r\n    margin-top: 1em;\r\n    flex-wrap: wrap;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    font-family: 'pape', serif;\r\n    flex-shrink: 1;\r\n}\r\n\r\n.header > a {\r\n    margin: auto 1em 1em 0;\r\n    padding: 1em 2em;\r\n    border: 1px solid white;\r\n    cursor: pointer;\r\n}\r\n\r\n.inactive {\r\n    background: rgba(13, 13, 26, 0.45);\r\n}\r\n\r\n.active {\r\n    background: rgba(13, 13, 26, 0.9);\r\n}\r\n\r\n.content {\r\n    flex-grow: 3;\r\n    max-height: 60vh;\r\n}", ""]);
+exports.push([module.i, ".container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-content: flex-start;\r\n    justify-content: center;\r\n    width: 95vw;\r\n}\r\n\r\n.header-title {\r\n    margin: auto 0;\r\n    padding: 0 20px 0 10px;\r\n}\r\n\r\n.header {\r\n    width: 100%;\r\n    margin-top: 1em;\r\n    flex-wrap: wrap;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    font-family: 'pape', serif;\r\n    flex-shrink: 1;\r\n}\r\n\r\n.header > a {\r\n    border-radius: 2em;\r\n    margin: auto 1em 1em 0;\r\n    padding: 1em 2em;\r\n    border: 1px solid white;\r\n    cursor: pointer;\r\n}\r\n.header > a:hover {\r\n    background-color: rgba(13, 13, 26, 0.9);\r\n}\r\n\r\n.inactive {\r\n    background: rgba(13, 13, 26, 0.45);\r\n}\r\n\r\n.active {\r\n    background: rgba(13, 13, 26, 0.9);\r\n}\r\n\r\n.content {\r\n    flex-grow: 3;\r\n    max-height: 60vh;\r\n}", ""]);
+
+
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(10)(false);
+// Module
+exports.push([module.i, ".anon-runner {\r\n    margin: auto 0;\r\n    padding: 0 1em;\r\n    text-align: left;\r\n}\r\n\r\n.runner {\r\n    margin: auto 0;\r\n    text-align: left;\r\n    background-clip: text;\r\n    -webkit-background-clip: text;\r\n    -moz-background-clip: text;\r\n    -webkit-text-fill-color: transparent;\r\n}\r\n\r\n.time {\r\n    margin: auto 0;\r\n    padding: 0 1em;\r\n    text-align: right;\r\n}\r\n\r\n.table-container {\r\n    height: 30em;\r\n    overflow-y: auto;\r\n    overflow-x: hidden;\r\n}\r\n\r\n.lb-row:nth-child(odd) {\r\n    background-color: rgba(255,255,255,0.05);\r\n}\r\n.lb-row:nth-child(even) {\r\n    background-color: rgba(255,255,255,0.02);\r\n}\r\n\r\n.lb-row {\r\n    padding: 1vh 1vw;\r\n    display: flex;\r\n    justify-content: space-between;\r\n    color: inherit;\r\n    text-decoration: inherit;\r\n    cursor: pointer;\r\n}\r\n\r\n.lb-row:hover {\r\n    background-color: rgba(13, 13, 26, 0.9);\r\n}", ""]);
 
 
 

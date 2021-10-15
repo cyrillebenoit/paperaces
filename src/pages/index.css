@@ -23,10 +23,14 @@
 }
 
 .header > a {
+    border-radius: 2em;
     margin: auto 1em 1em 0;
     padding: 1em 2em;
     border: 1px solid white;
     cursor: pointer;
+}
+.header > a:hover {
+    background-color: rgba(13, 13, 26, 0.9);
 }
 
 .inactive {

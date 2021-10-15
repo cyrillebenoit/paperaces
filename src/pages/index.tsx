@@ -19,13 +19,13 @@ export default () => {
     if (categories.active === undefined) {
         fetch('https://www.speedrun.com/api/v1/games/pdvzq96w/categories')
             .then((res: any) => res.json())
-            .then(({data}:any) => {
+            .then(({data}: any) => {
                 const missingRunners = new Set<string>();
                 let newCategories: Category[] = [];
                 let newRunners: Map<string, Runner> = new Map();
                 let catPromises: Promise<void>[] = [];
                 let runPromises: Promise<void>[] = [];
-                for (let cIndex = 0; cIndex<data.length; cIndex ++) {
+                for (let cIndex = 0; cIndex < data.length; cIndex++) {
                     let c = data[cIndex];
                     if (c.type === 'per-game') {
                         catPromises.push(new Promise<void>(resolve => {
@@ -35,8 +35,8 @@ export default () => {
                                 // get leaderboard for that console in selected category
                                 lbPromises.push(
                                     fetch(`https://www.speedrun.com/api/v1/leaderboards/pm64/category/${c.id}?var-${consoleVariableId}=${consoleVar.id}`)
-                                        .then((r:any) => r.json())
-                                        .then((lb:{data: any}) => {
+                                        .then((r: any) => r.json())
+                                        .then((lb: { data: any }) => {
                                             leaderboard[consoleVar.name] = lb.data.runs.map((entry: any) => {
                                                 let wasGuest = false;
                                                 let randomID = (Math.random() + 1).toString(36).substring(7);
@@ -71,8 +71,8 @@ export default () => {
                             Promise.all(lbPromises).then(() => {
                                 missingRunners.forEach(r => {
                                     runPromises.push(fetch(`https://www.speedrun.com/api/v1/users/${r}`)
-                                        .then((res:any) => res.json())
-                                        .then(({data}:any) => {
+                                        .then((res: any) => res.json())
+                                        .then(({data}: any) => {
                                             if (!data) {
                                                 return
                                             }
@@ -107,7 +107,11 @@ export default () => {
 
                 Promise.all(catPromises.concat(runPromises))
                     .then(() => {
-                        setCategories({categories: newCategories, active: newCategories.find(c => c.order === 0), runners: newRunners});
+                        setCategories({
+                            categories: newCategories,
+                            active: newCategories.find(c => c.order === 0),
+                            runners: newRunners
+                        });
                     }).catch(console.error)
             }).catch(console.error)
     }
@@ -116,7 +120,7 @@ export default () => {
     return (
         <div className={'container'}>
             <div className={'header'}>
-                {categories.categories.sort((a,b)=> a.order - b.order).map((c, i) =>
+                {categories.categories.sort((a, b) => a.order - b.order).map((c, i) =>
                     <a key={i} className={categories.active === c ? 'active' : 'inactive'}
                        onClick={() => setCategories({
                            categories: categories.categories,
@@ -126,11 +130,15 @@ export default () => {
             </div>
             <div className={'content'}>
                 <div style={{display: 'flex', justifyContent: 'center', flexWrap: "wrap"}}>
-                    {categories.active && categories.active.leaderboard ? consoles.map(c =>
-                        <SpeedrunColumn data={categories.active.leaderboard} console={c.name}
-                                        runners={categories.runners}
-                                        key={c.id}/>
-                    ) : <></>}
+                    {categories.active && categories.active.leaderboard ? consoles.map(c => {
+                        console.log(categories.active.leaderboard)
+                        return (
+                            categories.active.leaderboard[c.name].length > 0 ?
+                                <SpeedrunColumn data={categories.active.leaderboard} console={c.name}
+                                                runners={categories.runners}
+                                                key={c.id}/> : <></>
+                        )
+                    }) : <></>}
                 </div>
             </div>
         </div>

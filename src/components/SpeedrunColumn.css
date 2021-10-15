@@ -1,0 +1,46 @@
+.anon-runner {
+    margin: auto 0;
+    padding: 0 1em;
+    text-align: left;
+}
+
+.runner {
+    margin: auto 0;
+    text-align: left;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.time {
+    margin: auto 0;
+    padding: 0 1em;
+    text-align: right;
+}
+
+.table-container {
+    height: 30em;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.lb-row:nth-child(odd) {
+    background-color: rgba(255,255,255,0.05);
+}
+.lb-row:nth-child(even) {
+    background-color: rgba(255,255,255,0.02);
+}
+
+.lb-row {
+    padding: 1vh 1vw;
+    display: flex;
+    justify-content: space-between;
+    color: inherit;
+    text-decoration: inherit;
+    cursor: pointer;
+}
+
+.lb-row:hover {
+    background-color: rgba(13, 13, 26, 0.9);
+}
