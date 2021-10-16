@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;800&display=swap');
-
 body {
     margin: 0;
     background-color: #282c34;
-    font-family: 'Montserrat', serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .App {
@@ -17,6 +15,7 @@ body {
 
 .App-logo {
     height: 40vmin;
+    margin: 0 auto;
     pointer-events: none;
 }
 
