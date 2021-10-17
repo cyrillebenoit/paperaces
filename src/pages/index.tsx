@@ -7,7 +7,14 @@ import LoadingScreen from "components/LoadingScreen";
 
 export default () => {
     // State
-    const [categories, setCategories] = useState({categories: [], active: undefined, runners: new Map()});
+    const [state, setState] = useState({
+        categories: [],
+        active: undefined,
+    });
+    const [runners, setRunners] = useState({
+        runners: new Map<string, Runner>(),
+        missing: new Set<string>(),
+    });
 
     const consoleVariableId = 'r8r5y2le';
     const consoles = [
@@ -16,8 +23,37 @@ export default () => {
         {id: '81w7k25q', name: "Wii U VC"}
     ]
 
-    // Fetch Categories
-    if (categories.active === undefined) {
+    function fetchRunners(missingRunners: Set<string>, runPromises: Promise<void>[], stillMissing: Set<string>, newRunners: Map<string, Runner>): void {
+        for (const r of missingRunners) {
+            runPromises.push(fetch(`https://www.speedrun.com/api/v1/users/${r}`)
+                .then((res: any) => res.json())
+                .then((response: any) => {
+                    if (!response.data) {
+                        console.error("Could not find runner with id", r, response)
+                        stillMissing.add(r);
+                        return
+                    }
+
+                    const {data} = response;
+                    newRunners.set(data.id, {
+                        id: data.id,
+                        name: data.names && data.names.international ? data.names.international : 'Anonymous',
+                        color: {
+                            left: data["name-style"] && data["name-style"]["color-from"] && data["name-style"]["color-from"].dark ? data["name-style"]["color-from"].dark : '#fff',
+                            right: data["name-style"] && data["name-style"]["color-to"] && data["name-style"]["color-to"].dark ? data["name-style"]["color-to"].dark : '#fff'
+                        },
+                        country: data.location && data.location.country && data.location.country.code || undefined,
+                        link: data.weblink
+                    });
+                    return;
+                })
+                .catch(console.error)
+            )
+        }
+    }
+
+// Fetch Categories
+    if (state.active === undefined) {
         fetch('https://www.speedrun.com/api/v1/games/pdvzq96w/categories')
             .then((res: any) => res.json())
             .then(({data}: any) => {
@@ -63,6 +99,7 @@ export default () => {
                                                     place: entry.place,
                                                     runner: wasGuest ? randomID : entry.run.players[0].id,
                                                     time: entry.run.times.primary_t,
+                                                    date: entry.run.date ? Date.parse(entry.run.date) : -1,
                                                     link: entry.run.weblink,
                                                     video: entry.run.videos && entry.run.videos.links && entry.run.videos.links.length > 0 ? entry.run.videos.links[0].uri : undefined
                                                 }
@@ -71,41 +108,23 @@ export default () => {
                                         .catch(console.error)
                                 );
                             }
+                            let stillMissing: Set<string> = new Set();
                             Promise.all(lbPromises).then(() => {
-                                for (const r of missingRunners) {
-                                    runPromises.push(fetch(`https://www.speedrun.com/api/v1/users/${r}`)
-                                        .then((res: any) => res.json())
-                                        .then((response: any) => {
-                                            if (!response.data) {
-                                                console.error("Could not find runner with id", r, response)
-                                                return
-                                            }
+                                fetchRunners(missingRunners, runPromises, stillMissing, newRunners);
 
-                                            const {data} = response;
-                                            newRunners.set(data.id, {
-                                                id: data.id,
-                                                name: data.names && data.names.international ? data.names.international : 'Anonymous',
-                                                color: {
-                                                    left: data["name-style"] && data["name-style"]["color-from"] && data["name-style"]["color-from"].dark ? data["name-style"]["color-from"].dark : '#fff',
-                                                    right: data["name-style"] && data["name-style"]["color-to"] && data["name-style"]["color-to"].dark ? data["name-style"]["color-to"].dark : '#fff'
-                                                },
-                                                country: data.location && data.location.country && data.location.country.code || undefined,
-                                                link: data.weblink
+                                setTimeout(() => {
+                                    Promise.all([...catPromises, ...runPromises])
+                                        .then(() => {
+                                            setState({
+                                                categories: newCategories,
+                                                active: newCategories.find(c => c.order === 0),
                                             });
-                                            return;
-                                        })
-                                        .catch(console.error)
-                                    )
-                                }
-
-                                setTimeout(() => Promise.all([...catPromises, ...runPromises])
-                                    .then(() => {
-                                        setCategories({
-                                            categories: newCategories,
-                                            active: newCategories.find(c => c.order === 0),
-                                            runners: newRunners
-                                        });
-                                    }).catch(console.error), 5000);
+                                            setRunners({
+                                                runners: newRunners,
+                                                missing: stillMissing
+                                            });
+                                        }).catch(console.error);
+                                }, 5000);
 
                                 newCategories.push({
                                     name: c.name,
@@ -122,32 +141,49 @@ export default () => {
             .catch(console.error)
     }
 
+    if (runners.missing.size > 0) {
+        let runPromises: Promise<void>[] = [];
+        let newMissing: Set<string> = new Set();
+        fetchRunners(runners.missing, runPromises, newMissing, runners.runners);
+        setTimeout(() => {
+            Promise.all(runPromises)
+                .then(() => {
+                    setRunners({
+                        runners: runners.runners,
+                        missing: newMissing
+                    });
+                }).catch(console.error);
+        }, 5000);
+    }
+
     // Render
     return (
-        categories.active ? <>
-            <div className={'container'}>
-                <div className={'header'}>
-                    {categories.categories.sort((a, b) => a.order - b.order).map((c, i) =>
-                        <a key={i} className={categories.active === c ? 'active' : 'inactive'}
-                           onClick={() => setCategories({
-                               categories: categories.categories,
-                               active: c,
-                               runners: categories.runners
-                           })}>{c.name}</a>)}
-                </div>
-                <div className={'content'}>
-                    <div style={{display: 'flex', justifyContent: 'center', flexWrap: "wrap"}}>
-                        {categories.active && categories.active.leaderboard ? consoles.map(c => {
-                            return (
-                                categories.active.leaderboard[c.name].length > 0 ?
-                                    <SpeedrunColumn data={categories.active.leaderboard} console={c.name}
-                                                    runners={categories.runners}
-                                                    key={c.id}/> : <div key={c.id}/>
-                            )
-                        }) : <></>}
+        state.active ? <>
+                <div className={'container'}>
+                    <div className={'header'}>
+                        {state.categories.sort((a, b) => a.order - b.order).map((c, i) =>
+                            <a key={i} className={state.active === c ? 'active' : 'inactive'}
+                               onClick={() => setState({
+                                   categories: state.categories,
+                                   active: c
+                               })}>{c.name}</a>)}
                     </div>
+                    <div className={'content'}>
+                        <div style={{display: 'flex', justifyContent: 'center', flexWrap: "wrap", height: '100%'}}>
+                            {state.active && state.active.leaderboard ? consoles.map(c => {
+                                return (
+                                    state.active.leaderboard[c.name].length > 0 ?
+                                        <SpeedrunColumn data={state.active.leaderboard} console={c.name}
+                                                        runners={runners.runners}
+                                                        key={c.id}/> : <div key={c.id}/>
+                                )
+                            }) : <></>}
+                        </div>
+                    </div>
+                    {/*Site under construction*/}
+                    {/*Left click an entry to open the SRC page for the run*/}
+                    {/*Right click an entry to open the video for the run*/}
                 </div>
-            </div>
             </>
             : <LoadingScreen text={"Please wait while we fetch the data from Speedrun.com"}/>
     )

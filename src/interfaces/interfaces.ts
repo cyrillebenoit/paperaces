@@ -3,6 +3,7 @@ export interface LeaderboardEntry {
     place: number,
     runner: string,
     time: number,
+    date: number,
     link: string,
     video?: string
 }

@@ -19,23 +19,37 @@
     text-align: right;
 }
 
+.speedrun-column {
+    flex: 1;
+    padding: 0 1em 0 1em;
+    height: 100%;
+    min-width: min(500px,98vw);
+    max-width: 750px;
+}
+
+.speedrun-column > h2 {
+}
+
 .table-container {
-    height: 30em;
     overflow-y: auto;
     overflow-x: hidden;
+    max-height: 90%;
 }
 
 .lb-row:nth-child(odd) {
-    background-color: rgba(255,255,255,0.05);
+    background-color: rgba(255, 255, 255, 0.05);
 }
+
 .lb-row:nth-child(even) {
-    background-color: rgba(255,255,255,0.02);
+    background-color: rgba(255, 255, 255, 0.02);
 }
 
 .lb-row {
     padding: 1vh 1vw;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     color: inherit;
     text-decoration: inherit;
     cursor: pointer;
@@ -43,4 +57,35 @@
 
 .lb-row:hover {
     background-color: rgba(13, 13, 26, 0.9);
+}
+
+.lb-row > th {
+    display: flex;
+    justify-content: center;
+    font-weight: normal;
+}
+
+.lb-row > th:nth-child(1) {
+    width: 0.5rem;
+    padding: 0;
+}
+
+.lb-row > th:nth-child(2) {
+    width: 10rem;
+}
+
+.lb-row > th:nth-child(3) {
+    width: 11rem;
+    text-align: left;
+}
+
+.lb-row > th:nth-child(4) {
+    width: 5rem;
+}
+
+.runner-flag {
+    height: 12px;
+    margin-right: 4px;
+    border-radius: 2px;
+    box-shadow: 1px 1px rgba(0,0,0,.1);
 }

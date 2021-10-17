@@ -7,7 +7,7 @@ function LoadingScreen(props: { text?: string }) {
             <img src={logo} className="App-logo" alt="logo" style={{imageRendering: "pixelated"}}/>
         </div>
         <div style={{textAlign: "center"}}>
-            <em style={{fontFamily: "pape, 'Montserrat', sans-serif"}}>{props.text ? props.text : 'Loading...'}</em>
+            <em style={{fontSize: '2.5em', fontFamily: "pape, 'Montserrat', sans-serif"}}>{props.text ? props.text : 'Loading...'}</em>
         </div>
     </div>;
 }
