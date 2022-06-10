@@ -20,7 +20,8 @@ export default () => {
     const consoles = [
         {id: 'jq6vjo71', name: "N64"},
         {id: '5lm2934q', name: "Wii VC"},
-        {id: '81w7k25q', name: "Wii U VC"}
+        {id: '81w7k25q', name: "Wii U VC"},
+        {id: 'jqz2x3kq', name: "Switch VC"}
     ]
 
     function fetchRunners(missingRunners: Set<string>, runPromises: Promise<void>[], stillMissing: Set<string>, newRunners: Map<string, Runner>): void {
