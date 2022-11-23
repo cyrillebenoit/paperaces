@@ -37,7 +37,8 @@ function App() {
                 <meta name="theme-color" content="#ffffff"/>
 
                 {/*Analytics*/}
-                <script async defer data-domain="paperaces.com" src="https://analytics.papaccino.gg/js/plausible.js"/>
+                <script async defer data-domain="paperaces.com"
+                        src="https://analytics.papaccino.gg/js/plausible.js"/>
             </Head>
             <div className="App">
                 <React.Suspense fallback={<LoadingScreen/>}>

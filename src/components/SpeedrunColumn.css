@@ -16,15 +16,15 @@
 .time {
     margin: auto 0;
     padding: 0 1em;
+    width: 100%;
     text-align: right;
 }
 
 .speedrun-column {
     flex: 1;
-    padding: 0 1em 0 1em;
-    height: 100%;
-    min-width: min(500px,98vw);
-    max-width: 750px;
+    /*margin: 0 1em 0 1em;*/
+    max-width: 90vw;
+    width: 750px;
 }
 
 .speedrun-column > h2 {
@@ -33,7 +33,14 @@
 .table-container {
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 90%;
+    max-height: 750px;
+}
+
+.name-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 .lb-row:nth-child(odd) {
@@ -45,11 +52,7 @@
 }
 
 .lb-row {
-    padding: 1vh 1vw;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    height: 15px;
     color: inherit;
     text-decoration: inherit;
     cursor: pointer;
@@ -59,27 +62,27 @@
     background-color: rgba(13, 13, 26, 0.9);
 }
 
-.lb-row > th {
-    display: flex;
-    justify-content: center;
+.lb-row > td {
+    height: inherit;
     font-weight: normal;
+    padding: 1rem 0.5rem;
 }
 
-.lb-row > th:nth-child(1) {
+.lb-row > td:nth-child(1) {
     width: 0.5rem;
     padding: 0;
 }
 
-.lb-row > th:nth-child(2) {
+.lb-row > td:nth-child(2) {
     width: 10rem;
 }
 
-.lb-row > th:nth-child(3) {
+.lb-row > td:nth-child(3) {
     width: 11rem;
-    text-align: left;
+    /*text-align: left;*/
 }
 
-.lb-row > th:nth-child(4) {
+.lb-row > td:nth-child(4) {
     width: 5rem;
 }
 

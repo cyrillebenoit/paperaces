@@ -4,6 +4,7 @@ import SpeedrunColumn from "components/SpeedrunColumn";
 import {Category, Leaderboard, Runner} from "../interfaces/interfaces";
 import fetch from "node-fetch";
 import LoadingScreen from "components/LoadingScreen";
+import {Grid} from "@mui/material";
 
 export default () => {
     // State
@@ -159,33 +160,42 @@ export default () => {
 
     // Render
     return (
-        state.active ? <>
-                <div className={'container'}>
-                    <div className={'header'}>
-                        {state.categories.sort((a, b) => a.order - b.order).map((c, i) =>
-                            <a key={i} className={state.active === c ? 'active' : 'inactive'}
-                               onClick={() => setState({
-                                   categories: state.categories,
-                                   active: c
-                               })}>{c.name}</a>)}
-                    </div>
-                    <div className={'content'}>
-                        <div style={{display: 'flex', justifyContent: 'center', flexWrap: "wrap", height: '100%'}}>
-                            {state.active && state.active.leaderboard ? consoles.map(c => {
-                                return (
-                                    state.active.leaderboard[c.name].length > 0 ?
-                                        <SpeedrunColumn data={state.active.leaderboard} console={c.name}
-                                                        runners={runners.runners}
-                                                        key={c.id}/> : <div key={c.id}/>
-                                )
-                            }) : <></>}
-                        </div>
-                    </div>
-                    {/*Site under construction*/}
-                    {/*Left click an entry to open the SRC page for the run*/}
-                    {/*Right click an entry to open the video for the run*/}
+        state.active ? <Grid container direction={"column"} justifyContent={"center"} alignItems={"center"}>
+            <Grid item style={{
+                fontSize: '2rem',
+                textAlign: "center",
+                paddingTop: '2rem',
+                fontFamily: "'pape', 'Montserrat', sans-serif"
+            }}>
+                Paper Mario Speedrunning Leaderboards
+            </Grid>
+            <Grid item>
+                <div className={'header'}>
+                    {state.categories.sort((a, b) => a.order - b.order).map((c, i) =>
+                        <a key={i} className={`category ${state.active === c ? 'active' : 'inactive'}`}
+                           onClick={() => setState({
+                               categories: state.categories,
+                               active: c
+                           })}>{c.name}</a>)}
                 </div>
-            </>
-            : <LoadingScreen text={"Please wait while we fetch the data from Speedrun.com"}/>
+            </Grid>
+            <Grid item>
+                <Grid container justifyContent={"center"} alignItems={"flex-start"} spacing={2}>
+                    {state.active && state.active.leaderboard ? consoles.filter(c => state.active.leaderboard[c.name].length > 0).map(c => {
+                        return (
+                            state.active.leaderboard[c.name].length > 0 ?
+                                <Grid item key={c.id}><SpeedrunColumn data={state.active.leaderboard} console={c.name}
+                                                                      runners={runners.runners}/></Grid> : <Grid item key={c.id}/>
+                        )
+                    }) : <></>}
+
+                </Grid>
+            </Grid>
+            <Grid item style={{padding: '2rem 0'}}>- Made by&nbsp;<a className={'white'}
+                                                        href={'https://papaccino.gg/'}>Papaccino</a>&nbsp;-</Grid>
+            {/*Site under construction*/}
+            {/*Left click an entry to open the SRC page for the run*/}
+            {/*Right click an entry to open the video for the run*/}
+        </Grid> : <LoadingScreen text={"Please wait while we fetch the data from Speedrun.com"}/>
     )
 }

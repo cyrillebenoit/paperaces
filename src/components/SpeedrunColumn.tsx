@@ -36,6 +36,7 @@ function SpeedrunColumn(props: { data: Leaderboard, console: string, runners: Ma
                         '#868686',
             fontWeight: place <= 3 ? 500 :
                 300,
+            textAlign: 'center'
         }}>{place}</div>
     }
 
@@ -43,8 +44,7 @@ function SpeedrunColumn(props: { data: Leaderboard, console: string, runners: Ma
         const seconds = time % 60;
         const minutes = Math.floor(time / 60) % 60;
         const hours = Math.floor(time / 3600);
-        return <div
-            className={"time"}>{hours}h{minutes < 10 ? '0' : ''}{minutes}m{seconds < 10 ? '0' : ''}{seconds}s</div>
+        return `${hours}h${minutes < 10 ? '0' : ''}${minutes}m${seconds < 10 ? '0' : ''}${seconds}s`
     }
 
     const board = props.data[props.console]
@@ -80,7 +80,7 @@ function SpeedrunColumn(props: { data: Leaderboard, console: string, runners: Ma
         <div className={'speedrun-column'}>
             <h2 style={{textAlign: "center"}}>{props.console}</h2>
             <div className={'table-container'}>
-                <table style={{
+                <table cellSpacing={0} style={{
                     width: "100%"
                 }}>
                     <tbody>
@@ -94,10 +94,12 @@ function SpeedrunColumn(props: { data: Leaderboard, console: string, runners: Ma
                                 window.open(d.video)
                             }
                         }} key={i}>
-                            <th>{formatPlace(d.place)}</th>
-                            <th>{formatName(d.runner)}</th>
-                            <th>{formatDate(d.date)}</th>
-                            <th>{formatTime(d.time)}</th>
+                            <td>{formatPlace(d.place)}</td>
+                            <td style={{height: "'inherit"}}>
+                                <div className={"name-cell"}>{formatName(d.runner)}</div>
+                            </td>
+                            <td align={"center"}>{formatDate(d.date)}</td>
+                            <td>{formatTime(d.time)}</td>
                         </tr>);
                     })}
                     </tbody>
